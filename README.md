@@ -134,7 +134,7 @@ Comparison:
 
   + Distributional MCID: 13.33% (conservative, accounts for threshold uncertainty)
   + Fixed MCID: 1.90% (optimistic, ignores threshold uncertainty)
-  + *Difference*: 7.9 percentage points
+  + *Difference*: 11.43 percentage points
 
 **Recommendation**: Use distributional approach for primary analysis as it provides more realistic, defensible estimates.
 
