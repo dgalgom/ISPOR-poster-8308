@@ -4,6 +4,7 @@
 ## From complex statistics to clinically meaningful insights: Interpreting results in meta-analyses of continuous outcomes
 ### 📋 Overview
 This repository provides a comprehensive methodological framework for translating abstract statistical metrics—specifically Standardized Mean Differences (SMDs)—into clinically interpretable, scale-specific probabilities of achieving meaningful patient benefit.
+
 **The Core Challenge**:
 Meta-analyses often report treatment effects in standardized units (e.g., SMD = -0.60 standard deviations), which are:
 
@@ -45,6 +46,7 @@ Traditional clinical trial reporting: `Treatment A reduced pain with a SMD = -0.
 Statistical significance (p < 0.001) tells us the effect is real but not whether it's clinically important. An SMD of -0.60 could represent a trivial or substantial benefit depending on the outcome scale—context is lost in standardization.
 
 *Step 2: Translation to Scale-Specific Units*
+
 We convert abstract SMDs to interpretable, scale-specific metrics:
 
 ```{r}
@@ -237,5 +239,7 @@ prob_high_CV <- mean(effect_draws <= mcid_draws_high)
 
 # Result: 22.41% (95% CrI: 6.21%, 47.19%)
 ```
+
+<img width="2550" height="2100" alt="dist_sens_2" src="https://github.com/user-attachments/assets/ff375bc5-6777-4af8-b13d-99238f5e3524" />
 
 **Finding**: Higher uncertainty increases probability to 22.41% (+13 percentage points from primary), but still remains <30%, indicating conclusions are robust even under pessimistic assumptions about MCID heterogeneity.
