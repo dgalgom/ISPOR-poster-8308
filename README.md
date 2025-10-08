@@ -112,11 +112,11 @@ mcid_draws <- rnorm(n_sims, mean = mcid_mean, sd = mcid_SD)
 # Probability of Clinical Significance
 prob_clinical_sig <- mean(effect_draws <= mcid_draws)
 
-# Result: 9.82%
+# Result: 13.33%
 ```
 
 **Interpretation**:
-There is a 9.82% probability that the treatment effect achieves or exceeds the MCID when accounting for uncertainty in both quantities.
+There is a 13.33% probability that the treatment effect achieves or exceeds the MCID when accounting for uncertainty in both quantities.
 
 **3c. Secondary Analysis: Fixed MCID Threshold**
 
@@ -132,7 +132,7 @@ prob_fixed <- mean(effect_draws <= mcid_fixed)
 
 Comparison:
 
-  + Distributional MCID: 9.82% (conservative, accounts for threshold uncertainty)
+  + Distributional MCID: 13.33% (conservative, accounts for threshold uncertainty)
   + Fixed MCID: 1.90% (optimistic, ignores threshold uncertainty)
   + *Difference*: 7.9 percentage points
 
@@ -140,7 +140,7 @@ Comparison:
 
 **3d. Quantifying Uncertainty: Credible Intervals for Probabilities**
 
-The Question: We have a point estimate (9.82%), but what's the uncertainty around that probability itself?
+The Question: We have a point estimate (13.33%), but what's the uncertainty around that probability itself?
 Solution: Account for parameter uncertainty in the treatment effect estimate by resampling.
 
 ```{r}
@@ -164,16 +164,27 @@ for(i in 1:n_iterations) {
 prob_mean <- mean(prob_distribution)
 prob_CI <- quantile(prob_distribution, c(0.025, 0.975))
 
-# Result: 9.82% (95% CrI: 0.12%, 44.33%)
+# Result: 13.33% (95% CrI: 0.69%, 45.32%)
 ```
 <img width="2550" height="2100" alt="dist_primary" src="https://github.com/user-attachments/assets/17039027-64fb-49f0-935f-b072c7726f75" />
 
 **Output**:
-**Probability of clinical significance: 9.82% (95% CrI: 0.12%, 44.33%)**
+**Probability of clinical significance: 13.33% (95% CrI: 0.69%, 45.32%)**
 
   + ✅ Provides complete uncertainty quantification
   + ✅ Reflects finite sample size and estimation error
   + ✅ Enables probabilistic decision-making with known confidence bounds
+
+## Visualization of the generated distributional random draws and clinical probabilities
+
+It is easier to understand this process by visualizing it directly. Basically, what we did firstly is to generate treatment effect and MCID distributions using the re-expressed meta-analytic point estimate and SD, and MCID and SD (CV=20%). Then, we compared the generated 10,000 random draws (plot on the left). However, to account for parameter uncertainty, we iterated this process 1,000 times using a random draw for the mean treatment effect to generate those 10,000 distributional values and compare to the MCID values. In the second plot, an example of this process applying a mean treatment effect of -1.00 point was generated.
+
+
+<img width="4200" height="1800" alt="comparison_draws" src="https://github.com/user-attachments/assets/9d2dcd97-df1c-4816-9206-3bc4b2a8268f" />
+
+After 1,000 iterations, we have a collection of mean probabilities of the treatment being clinically important for the patients, which were distributed as follows:
+
+<img width="2400" height="1800" alt="prob_dist" src="https://github.com/user-attachments/assets/a1003458-8b75-414c-9573-ed523ee29f58" />
 
 **Step 4: Robustness Through Sensitivity Analyses**
 
@@ -214,7 +225,7 @@ prob_beta <- mean(effect_beta <= mcid_draws)
 
 <img width="2550" height="2100" alt="dist_sens_1" src="https://github.com/user-attachments/assets/5e4e5f1e-07cf-4109-8863-950d51b1a27e" />
 
-**Finding**: Beta distribution yields 13.47%—consistent with primary analysis (9.82%), differing by only ~4.5 percentage points.
+**Finding**: Beta distribution yields 13.47%—consistent with primary analysis (13.33%), differing by only ~0.1 percentage points.
 
 *4b. Varying MCID Uncertainty (Coefficient of Variation)*
 
@@ -242,4 +253,4 @@ prob_high_CV <- mean(effect_draws <= mcid_draws_high)
 
 <img width="2550" height="2100" alt="dist_sens_2" src="https://github.com/user-attachments/assets/ff375bc5-6777-4af8-b13d-99238f5e3524" />
 
-**Finding**: Higher uncertainty increases probability to 22.41% (+13 percentage points from primary), but still remains <30%, indicating conclusions are robust even under pessimistic assumptions about MCID heterogeneity.
+**Finding**: Higher uncertainty increases probability to 22.41% (+10 percentage points from primary), but still remains <30%, indicating conclusions are robust even under pessimistic assumptions about MCID heterogeneity.
