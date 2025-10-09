@@ -180,14 +180,16 @@ prob_CI <- quantile(prob_distribution, c(0.025, 0.975))
 
 This process is easier to grasp when visualized directly. In essence, our first step was to generate distributions for the treatment effect and the MCID using the re-expressed meta-analytic point estimate and standard deviation (SD), along with the MCID and its SD (assuming a coefficient of variation of 20%), respectively. We then compared 10,000 randomly generated draws from these distributions (as shown in the left plot).
 
-To account for parameter uncertainty, this procedure was repeated 1,000 times. In each iteration, a random draw for the mean treatment effect was used to generate a new set of 10,000 values, which were then compared to the corresponding MCID values. The second plot illustrates an example of this process using a mean treatment effect of –1.00 point (i.e., random draw extracted from the treatment effect distribution).
-
+To account for parameter uncertainty, this procedure was repeated 1,000 times. In each iteration, a random draw for the mean treatment effect was used to generate a new set of 10,000 values, which were then compared to the corresponding MCID values. The second plot illustrates an example of this process using a mean treatment effect of –1.00 point (i.e., random draw extracted from the treatment effect distribution). In the animation below, 1,000 simulated comparisons for 100 iterations were run for illustrative purposes.
 
 <img width="4200" height="1800" alt="comparison_draws" src="https://github.com/user-attachments/assets/9d2dcd97-df1c-4816-9206-3bc4b2a8268f" />
+
+![treatment_mcid_animation](https://github.com/user-attachments/assets/dffab2f9-8d53-4220-b513-82217ce6891c)
 
 After 1,000 iterations, we have a collection of mean probabilities of the treatment being clinically important for the patients, which were distributed as follows:
 
 <img width="2400" height="1800" alt="prob_dist" src="https://github.com/user-attachments/assets/a1003458-8b75-414c-9573-ed523ee29f58" />
+
 
 **Step 4: Robustness Through Sensitivity Analyses**
 
