@@ -141,6 +141,7 @@ Comparison:
 **3d. Quantifying Uncertainty: Credible Intervals for Probabilities**
 
 The Question: We have a point estimate (13.33%), but what's the uncertainty around that probability itself?
+
 Solution: Account for parameter uncertainty in the treatment effect estimate by resampling.
 
 ```{r}
@@ -177,7 +178,9 @@ prob_CI <- quantile(prob_distribution, c(0.025, 0.975))
 
 ## Visualization of the generated distributional random draws and clinical probabilities
 
-It is easier to understand this process by visualizing it directly. Basically, what we did firstly is to generate treatment effect and MCID distributions using the re-expressed meta-analytic point estimate and SD, and MCID and SD (CV=20%). Then, we compared the generated 10,000 random draws (plot on the left). However, to account for parameter uncertainty, we iterated this process 1,000 times using a random draw for the mean treatment effect to generate those 10,000 distributional values and compare to the MCID values. In the second plot, an example of this process applying a mean treatment effect of -1.00 point was generated.
+This process is easier to grasp when visualized directly. In essence, our first step was to generate distributions for the treatment effect and the MCID using the re-expressed meta-analytic point estimate and standard deviation (SD), along with the MCID and its SD (assuming a coefficient of variation of 20%), respectively. We then compared 10,000 randomly generated draws from these distributions (as shown in the left plot).
+
+To account for parameter uncertainty, this procedure was repeated 1,000 times. In each iteration, a random draw for the mean treatment effect was used to generate a new set of 10,000 values, which were then compared to the corresponding MCID values. The second plot illustrates an example of this process using a mean treatment effect of –1.00 point (i.e., random draw extracted from the treatment effect distribution).
 
 
 <img width="4200" height="1800" alt="comparison_draws" src="https://github.com/user-attachments/assets/9d2dcd97-df1c-4816-9206-3bc4b2a8268f" />
