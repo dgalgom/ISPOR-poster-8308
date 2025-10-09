@@ -242,6 +242,7 @@ Rationale: Published MCID estimates show substantial heterogeneity across:
   + Study designs (within vs. between-subject)
 
 Primary Analysis CV = 20%: Moderate uncertainty, mid-range of literature estimates
+
 Sensitivity Analysis: CV = 40%: Upper bound representing maximum plausible real-world variation
 
 ```{r}
