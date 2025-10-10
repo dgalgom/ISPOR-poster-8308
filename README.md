@@ -184,11 +184,11 @@ To account for parameter uncertainty, this procedure was repeated 1,000 times. I
 
 <img width="4200" height="1800" alt="comparison_draws" src="https://github.com/user-attachments/assets/9d2dcd97-df1c-4816-9206-3bc4b2a8268f" />
 
-![treatment_mcid_animation](https://github.com/user-attachments/assets/dffab2f9-8d53-4220-b513-82217ce6891c)
+![treatment_mcid_animation](https://github.com/user-attachments/assets/6f3de248-d957-4c15-b8df-56b84a029b84)
 
 After 1,000 iterations, we have a collection of mean probabilities of the treatment being clinically important for the patients, which were distributed as follows:
 
-<img width="2400" height="1800" alt="prob_dist" src="https://github.com/user-attachments/assets/a1003458-8b75-414c-9573-ed523ee29f58" />
+<img width="2400" height="1800" alt="prob_dist" src="https://github.com/user-attachments/assets/85a4ea7e-c649-4c94-9c8f-0227df957268" />
 
 
 **Step 4: Robustness Through Sensitivity Analyses**
